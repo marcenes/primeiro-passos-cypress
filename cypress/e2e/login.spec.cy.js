@@ -1,3 +1,5 @@
+import userData from "../fixtures/userData.json"
+
 describe('Orange HRM Tests', () => {
 
   const selectorsList = {
@@ -10,10 +12,11 @@ describe('Orange HRM Tests', () => {
     credentialRequiredError: ".oxd-input-field-error-message"
   }
 
+
   it('Login Success', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorsList.userNameField).type('Admin')
-    cy.get(selectorsList.passwordField).type('admin123')
+    cy.get(selectorsList.userNameField).type(userData.userSucess.username)
+    cy.get(selectorsList.passwordField).type(userData.userSucess.password)
     cy.get(selectorsList.loginButton).click()
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
     cy.get(selectorsList.sectionTittleTopBar)
@@ -23,15 +26,15 @@ describe('Orange HRM Tests', () => {
   
   it('Login Fail', ()=> {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorsList.userNameField).type('Rodrigo')
-    cy.get(selectorsList.passwordField).type('rodrigo123')
+    cy.get(selectorsList.userNameField).type(userData.userFail.username)
+    cy.get(selectorsList.passwordField).type(userData.userFail.password)
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.wrongCredentialAlert)
   })
  it('No email/password', () =>{
   cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-  cy.get(selectorsList.userNameField).type('Admin')
-  cy.get(selectorsList.passwordField).type(' ')
+  cy.get(selectorsList.userNameField).type(userData.credentialRequired.usermane)
+  cy.get(selectorsList.passwordField).type(userData.credentialRequired.password)
   cy.get(selectorsList.loginButton).click()
   cy.get(selectorsList.credentialRequiredError)
  

@@ -1,0 +1,16 @@
+{
+    "userSucess":{
+      "username": "Admin",
+      "password": "admin123"
+    },
+
+    "userFail":{
+      "username": "Rodrigo",
+      "password": "rodrigo123"
+    },
+
+    "credentialRequired":{
+      "usermane": " ",
+      "password": "admin123"
+    }
+  }
