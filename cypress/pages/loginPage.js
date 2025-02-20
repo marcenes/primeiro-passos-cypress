@@ -22,6 +22,20 @@ class LoginPage {
         cy.get(this.selectorsList().loginButton).click()
     }
 
+    checkAccessInvalid(){
+        cy.get(this.selectorsList().wrongCredentialAlert)
+    }
+
+    checkrequiredAccess(username, password){
+        cy.get(this.selectorsList().userNameField).type(username)
+        cy.get(this.selectorsList().passwordField).type(password)
+        cy.get(this.selectorsList().loginButton).click()
+    }
+
+    requiredError(){
+        cy.get(this.selectorsList().credentialRequiredError)
+    }
+
 }
 
 export default LoginPage

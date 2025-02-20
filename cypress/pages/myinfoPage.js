@@ -20,32 +20,34 @@ class MyinfoPage {
         cy.get(this.selectorsList().MyinfoButton).click()
     }
 
-    changedataUser(){
-        cy.get(this.selectorsList().firstNameField).clear().type('Jorge')
-        cy.get(this.selectorsList().midleNameField).clear().type('Alex')
-        cy.get(this.selectorsList().lastNameField).clear().type('Abreu')
+    changedataUser(firstName, midName, lastName){
+        cy.get(this.selectorsList().firstNameField).clear().type(firstName)
+        cy.get(this.selectorsList().midleNameField).clear().type(midName)
+        cy.get(this.selectorsList().lastNameField).clear().type(lastName)
     }
 
-    dropdownMenus(){
-        cy.get(this.selectorsList().employeeIdField).eq(3).clear().type('Jorginho')
-        cy.get(this.selectorsList().otherIdField).eq(4).clear().type('7827362')
-        cy.get(this.selectorsList().driveLicenseField).eq(5).clear().type('98372198321')
-        cy.get(this.selectorsList().expiredDriveLicence).eq(0).clear().type('2030-01-18')
+    dropdownMenus(employeId, otherID, driveLicenseDateID, expiredDATE){
+        cy.get(this.selectorsList().employeeIdField).eq(3).clear().type(employeId)
+        cy.get(this.selectorsList().otherIdField).eq(4).clear().type(otherID)
+        cy.get(this.selectorsList().driveLicenseField).eq(5).clear().type(driveLicenseDateID)
+        cy.get(this.selectorsList().expiredDriveLicence).eq(0).clear().type(expiredDATE)
         cy.get('.--close').click()
     }
 
     otherfieldsUser(){
         cy.get(this.selectorsList().nationalityField).eq(0).click()
         cy.get(':nth-child(27)').click()
-        cy.get(this.maritalStatusField).eq(1).click()
+        cy.get(this.selectorsList().maritalStatusField).eq(1).click()
         cy.get('.oxd-select-dropdown > :nth-child(3)').click()
 
     }
 
-    submitsaveButton(){
+
+    saveform(){
         cy.get(this.selectorsList().updateButton).eq(0).click()
         cy.get('.oxd-toast-content--success').contains('Successfully Updated')
     }
+
 }
 
 export  default MyinfoPage
