@@ -16,7 +16,7 @@ describe('Orange HRM Tests', () => {
  
 
 
-  it('User Info Update - Sucess', () => {
+  it('User Update Data - Sucess', () => {
 
     loginPage.accessloginPage()
     loginPage.LoginWithUser(userData.userSucess.username, userData.userSucess.password)
@@ -26,7 +26,7 @@ describe('Orange HRM Tests', () => {
     myinfoPage.dropdownMenus('employeID', 'Other Id', '2025-02-18', '2030-02-18')
     myinfoPage.otherfieldsUser()
     myinfoPage.saveform()
-    // myinfoPage.submitsaveButton()
+    
   })
   
   
